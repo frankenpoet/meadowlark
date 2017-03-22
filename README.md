@@ -1,2 +1,2 @@
 # meadowlark
-project site for Meadolark Travel
+project site for Meadowlark Travel
