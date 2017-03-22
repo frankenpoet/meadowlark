@@ -2,6 +2,8 @@ var express = require('express');
 
 var app = express();
 
+var fortune = require('./lib/fortune.js');
+
 // set up handlebars view engine
 var handlebars = require('express-handlebars').create({ defaultLayout:'main' });
 
@@ -17,9 +19,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/about', function(req, res){
-    var randomFortune =
-        fortunes[Math.floor(Math.random() * fortunes.length)];
-    res.render('about', {fortune: randomFortune});
+    res.render('about', { fortune: fortune.getFortune() });
 });
 
 // 404 catch-all handler (middleware)
@@ -40,10 +40,3 @@ app.listen(app.get('port'), function(){
                app.get('port') + '; press Ctrl-C to terminate.');
 });
 
-var fortunes = [
-    "You will never succeed... give up now!",
-    "It will rain all day... and then it will rain more...",
-    "Today you will discover that your parents are aliens from another planet and that you are actually a plant.",
-    "People that believe in you are misguided.",
-    "The safest place to stand in not where you are standing... ever."
-];
