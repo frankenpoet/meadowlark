@@ -9,12 +9,15 @@
   },
   "author": "frankenpoet",
   "license": "MIT",
-    "repository":{
-        "type": "git",
-        "url": "https://github.com/frankenpoet/meadowlark.git"
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frankenpoet/meadowlark.git"
+  },
   "dependencies": {
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
   }
 }
