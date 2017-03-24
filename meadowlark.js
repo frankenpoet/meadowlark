@@ -5,7 +5,7 @@ var app = express();
 var fortune = require('./lib/fortune.js');
 
 // set up handlebars view engine
-var handlebars = require('express-handlebars').create({ defaultLayout:'main' });
+var handlebars = require('express-handlebars').create({ defaultLayout: 'main' });
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -29,6 +29,14 @@ app.get('/about', function(req, res){
     res.render('about', { fortune: fortune.getFortune(),
         pageTestScript: '/qa/tests-about.js'
 } );
+});
+
+app.get('/tours/hood-river', function(req, res){
+    res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate', function(req, res){
+    res.render('tours/request-group-rate');
 });
 
 // 404 catch-all handler (middleware)
