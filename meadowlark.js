@@ -36,9 +36,14 @@ app.get('/headers', function (req, res) {
 app.get('/about', function (req, res) {
     res.render('about', {
         fortune: fortune.getFortune()
-        , pageTestScript: '/qa/tests-about.js';
+        , pageTestScript: '/qa/tests-about.js'
     });
 });
+
+app.get('/thank-you', function (req, res){
+    res.render('thank-you');
+});
+
 app.get('/tours/hood-river', function (req, res) {
     res.render('tours/hood-river');
 });
@@ -46,7 +51,7 @@ app.get('/tours/request-group-rate', function (req, res) {
     res.render('tours/request-group-rate');
 });
 
-app.post('/process-contact', function(req, res){
+app.post('/process-contact', urlEncodedParser, function(req, res){
     console.log('Received contact from ' + req.body.name +
                " <" + req.body.email + ' >');
     // save to database...
