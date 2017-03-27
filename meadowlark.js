@@ -8,6 +8,8 @@ var handlebars = require('express-handlebars').create({
 var bodyParser = require('body-parser');
 var urlEncodedParser = bodyParser.urlencoded({ extended: false});
 
+var date = new Date();
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.disable('x-powered-by');
@@ -54,8 +56,17 @@ app.get('/tours/request-group-rate', function (req, res) {
 app.post('/process-contact', urlEncodedParser, function(req, res){
     console.log('Received contact from ' + req.body.name +
                " <" + req.body.email + ' >');
+
+    var conName = req.body.name;
+    var curTime = date.toString();
+
     // save to database...
-    res.redirect(303, '/thank-you');
+    //res.redirect(303, '/thank-you');
+    res.status(303);
+    res.render('thank-you', {
+        timeStamp: curTime,
+        contactName: conName
+    });
 });
 
 // 404 catch-all handler (middleware)
